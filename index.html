@@ -3,141 +3,605 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Yappers</title>
+    <title>Privacy Policy — Yappers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --text-color: #1f2937;
-            --bg-color: #f9fafb;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
+            --bg: #FAFAF8;
+            --surface: #FFFFFF;
+            --text: #1A1A1A;
+            --text-secondary: #5C5C5C;
+            --text-muted: #8A8A8A;
+            --accent: #2563EB;
+            --accent-light: #EFF4FF;
+            --border: #E8E8E4;
+            --border-light: #F0F0EC;
+            --section-bg: #F5F5F2;
+            --max-width: 720px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #111113;
+                --surface: #1A1A1E;
+                --text: #E8E8E6;
+                --text-secondary: #A0A0A0;
+                --text-muted: #6A6A6A;
+                --accent: #608AFF;
+                --accent-light: #1A2240;
+                --border: #2A2A2E;
+                --border-light: #222226;
+                --section-bg: #16161A;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background: var(--card-bg);
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: color-mix(in srgb, var(--surface) 85%, transparent);
+        }
+
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .header-brand span {
+            color: var(--accent);
+        }
+
+        .header-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 64px 24px 48px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(32px, 6vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.5;
+        }
+
+        .divider {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .divider hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .toc {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 24px 32px;
+        }
+
+        .toc-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 32px;
+        }
+
+        @media (max-width: 520px) {
+            .toc-grid { grid-template-columns: 1fr; }
+        }
+
+        .toc-grid a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .toc-grid a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .toc-grid a span {
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            margin-right: 8px;
+            font-size: 13px;
+        }
+
+        .content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px 80px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 16px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .section:first-child h2 {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .section p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .data-item {
+            background: var(--section-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 16px 20px;
+        }
+
+        .data-item .data-label {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .data-item .data-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .not-collected {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0;
+        }
+
+        .not-collected span {
+            font-size: 13px;
+            color: var(--text-muted);
+            background: var(--section-bg);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .not-collected span::before {
+            content: '✕';
+            font-size: 10px;
+            font-weight: 700;
+            opacity: 0.4;
+        }
+
+        .contact-card {
+            background: var(--section-bg);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 24px 28px;
+            margin-top: 16px;
         }
 
-        header {
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+        .contact-card p {
+            margin-bottom: 6px;
+            font-size: 15px;
         }
 
-        h1 { margin-bottom: 10px; color: #111827; }
-        h2 { margin-top: 30px; color: #111827; border-left: 4px solid var(--primary-color); padding-left: 15px; }
-        h3 { color: #374151; margin-top: 20px; }
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+        }
 
-        .meta { color: #6b7280; font-size: 0.95rem; }
-        .contact-info { background: #f3f4f6; padding: 20px; border-radius: 8px; margin-top: 30px; }
-        
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
 
-        @media (max-width: 600px) {
-            .container { margin: 10px; padding: 20px; }
-            h1 { font-size: 1.5rem; }
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .header, .scroll-top, .toc { display: none; }
+            body { font-size: 12px; }
+            .hero { padding: 24px 0; }
+            .content { padding: 0; }
+            .section h2 { break-after: avoid; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Privacy Policy</h1>
-        <div class="meta">
-            <strong>App:</strong> Yappers<br>
-            <strong>Developer:</strong> Life Lens<br>
-            <strong>Effective Date:</strong> March 8, 2026
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="header-brand"><span>Yappers</span></a>
+            <span class="header-badge">Legal</span>
         </div>
     </header>
 
-    <section>
-        <h2>1. Introduction</h2>
-        <p>Life Lens ("we", "us", or "our") operates the Yappers mobile application (the "App"). This Privacy Policy explains how we collect, use, and protect information when you use our App.</p>
-        <p>Yappers is an anonymous, real-time public feed where users can share text messages, GIFs, and trigger animations visible to all connected users. The App is designed to be used without any login or account registration.</p>
-        <p>By using the App, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
-    </section>
-
-    <section>
-        <h2>2. Information We Collect</h2>
-        <p>Yappers is built around anonymity and minimal data collection. We do not require registration, login, email addresses, phone numbers, or any personally identifiable information to use the App.</p>
-        
-        <h3>2.1 Information You Provide</h3>
-        <ul>
-            <li><strong>Username:</strong> When you first open the App, a random anonymous username is automatically generated (e.g., "Anon_3847"). This is stored locally on your device and is not linked to your identity.</li>
-            <li><strong>Messages:</strong> Text messages are broadcast in real time. They are not stored on our servers and are discarded after transmission.</li>
-            <li><strong>GIFs:</strong> Metadata (URL, dimensions) from our provider is broadcast. We do not store your selections.</li>
-            <li><strong>Animations:</strong> Animation triggers are broadcast without personal data association.</li>
-        </ul>
-
-        <h3>2.2 Information We Do Not Collect</h3>
-        <p>We do <strong>not</strong> collect: real names, emails, phone numbers, physical addresses, financial info, photos, contacts, location data, or biometric data.</p>
-
-        <h3>2.3 Automatically Collected Information</h3>
-        <p>The App does not use analytics SDKs or advertising trackers. Your IP address may be visible to our hosting infrastructure during communication, but we do not log, store, or process IP addresses for any profiling purposes.</p>
-    </section>
-
-    <section>
-        <h2>3. How We Use Information</h2>
-        <ul>
-            <li><strong>Message delivery:</strong> To broadcast content via WebSocket.</li>
-            <li><strong>Content moderation:</strong> Automated server-side filters block hate speech and harmful content in real time.</li>
-            <li><strong>Explicit language filtering:</strong> Optional client-side filtering happens entirely on your device.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>4. Data Storage and Retention</h2>
-        <p>Yappers operates on a "fire-and-forget" model. We maintain no message database or chat history. Data like your username and app preferences stay <strong>locally on your device</strong> and can be cleared via your device settings.</p>
-    </section>
-
-    <section>
-        <h2>5. Third-Party Services</h2>
-        <p><strong>Klipy (GIF Provider):</strong> The App communicates with Klipy’s API for GIF searches. Klipy may collect information as per their <a href="https://klipy.com/support/privacy-policy" target="_blank">privacy policy</a>. No personal info is shared with them by us.</p>
-    </section>
-
-    <section>
-        <h2>6. Children’s Privacy</h2>
-        <p>Yappers is intended for users aged 13 and older. We do not knowingly collect personal information from children under 13.</p>
-    </section>
-
-    <section>
-        <h2>7. Data Security</h2>
-        <p>We use encrypted connections (WSS/HTTPS). However, remember that any message you send is <strong>public</strong> and visible to all active users. Do not share sensitive information.</p>
-    </section>
-
-    <section>
-        <h2>8. Your Rights</h2>
-        <p>Because we do not store personal data on our servers, traditional data access/deletion requests are handled by the user clearing the App’s storage or uninstalling the App.</p>
-    </section>
-
-    <section>
-        <h2>9. Content Moderation</h2>
-        <p>We use automated server-side hard filters for harmful content and optional client-side display filters for profanity. No human moderation is employed.</p>
-    </section>
-
-    <section>
-        <h2>10. Contact Us</h2>
-        <div class="contact-info">
-            <strong>Life Lens</strong><br>
-            Email: <a href="mailto:nassimboussami@gmail.com">nassimboussami@gmail.com</a>
+    <div class="hero">
+        <h1>Privacy Policy</h1>
+        <div class="hero-meta">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Effective: March 8, 2026
+            </span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Life Lens
+            </span>
         </div>
-    </section>
-</div>
+    </div>
+
+    <div class="divider"><hr></div>
+
+    <nav class="toc">
+        <div class="toc-label">Contents</div>
+        <div class="toc-grid">
+            <a href="#s1"><span>01</span> Introduction</a>
+            <a href="#s7"><span>07</span> Data Security</a>
+            <a href="#s2"><span>02</span> Information We Collect</a>
+            <a href="#s8"><span>08</span> Your Rights</a>
+            <a href="#s3"><span>03</span> How We Use Information</a>
+            <a href="#s9"><span>09</span> Content Moderation</a>
+            <a href="#s4"><span>04</span> Data Storage &amp; Retention</a>
+            <a href="#s10"><span>10</span> International Users</a>
+            <a href="#s5"><span>05</span> Third-Party Services</a>
+            <a href="#s11"><span>11</span> Changes to This Policy</a>
+            <a href="#s6"><span>06</span> Children's Privacy</a>
+            <a href="#s12"><span>12</span> Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="divider"><hr></div>
+
+    <main class="content">
+
+        <div class="section" id="s1">
+            <h2>1. Introduction</h2>
+            <p>Life Lens ("we", "us", or "our") operates the Yappers mobile application (the "App"). This Privacy Policy explains how we collect, use, and protect information when you use our App.</p>
+            <p>Yappers is an anonymous, real-time public feed where users can share text messages, GIFs, and trigger animations visible to all connected users. The App is designed to be used without any login or account registration.</p>
+            <p>By using the App, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+        </div>
+
+        <div class="section" id="s2">
+            <h2>2. Information We Collect</h2>
+            <p>Yappers is built around anonymity and minimal data collection. We do not require registration, login, email addresses, phone numbers, or any personally identifiable information to use the App.</p>
+
+            <h3>2.1 Information You Provide</h3>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-label">Username</div>
+                    <div class="data-desc">When you first open the App, a random anonymous username is automatically generated (e.g., "Anon_3847"). This username is stored locally on your device and is not linked to your identity. You do not provide your real name.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Messages</div>
+                    <div class="data-desc">Any text messages you submit are broadcast to all connected users in real time. Messages are not stored on our servers — they are transmitted and then discarded. We do not maintain a message history or archive.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">GIFs</div>
+                    <div class="data-desc">When you send a GIF, the GIF metadata (URL, dimensions, and content ID from our third-party GIF provider) is broadcast to all connected users. We do not store GIF selections.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Animations</div>
+                    <div class="data-desc">When you trigger an animation (e.g., confetti), the animation name is broadcast to all connected users. No personal data is associated with this action.</div>
+                </div>
+            </div>
+
+            <h3>2.2 Information We Do Not Collect</h3>
+            <p>We want to be explicitly clear about what we do not collect:</p>
+            <div class="not-collected">
+                <span>Real names</span>
+                <span>Email addresses</span>
+                <span>Phone numbers</span>
+                <span>Physical addresses</span>
+                <span>Payment information</span>
+                <span>Photos or media</span>
+                <span>Contacts</span>
+                <span>Location data</span>
+                <span>Device identifiers</span>
+                <span>Biometric data</span>
+            </div>
+
+            <h3>2.3 Automatically Collected Information</h3>
+            <p>The App does not use analytics SDKs, crash reporting tools, or advertising trackers. We do not collect device information, IP addresses for profiling, or usage analytics. Your IP address may be visible to our hosting infrastructure as part of standard internet communication (WebSocket and HTTP connections), but we do not log, store, or process IP addresses for any purpose.</p>
+        </div>
+
+        <div class="section" id="s3">
+            <h2>3. How We Use Information</h2>
+            <p>The minimal information we handle is used solely for the following purposes:</p>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-label">Message Delivery</div>
+                    <div class="data-desc">To broadcast your text messages, GIFs, and animation triggers to all connected users in real time via WebSocket.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Content Moderation</div>
+                    <div class="data-desc">We apply a server-side filter to block messages containing hate speech, racist slurs, and other harmful content that violates community standards. Messages that trigger this filter are rejected and never broadcast. This filtering is done in real time and no message content is stored after processing.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Explicit Language Filtering</div>
+                    <div class="data-desc">The App includes an optional client-side explicit language filter. When enabled, profane or explicit words are replaced with asterisks on your device before being displayed. This filtering happens entirely on your device — no data about your filter preference is sent to our servers.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="s4">
+            <h2>4. Data Storage &amp; Retention</h2>
+            <p>Yappers operates on a "fire-and-forget" model. Messages are broadcast in real time to all connected users and are not stored on our servers. There is no message database, no chat history, and no data archive.</p>
+
+            <div class="highlight-box">
+                <p>The following data is stored <strong>locally on your device only</strong> (never transmitted to our servers except where noted): your auto-generated anonymous username (sent with each message so other users can see who posted), your theme preference (dark or light mode), your explicit language filter preference (on or off), your onboarding completion status, and a cached word list for the client-side explicit language filter.</p>
+            </div>
+
+            <p>This local data can be cleared at any time by clearing the App's data in your device settings or by uninstalling the App.</p>
+        </div>
+
+        <div class="section" id="s5">
+            <h2>5. Third-Party Services</h2>
+            <p>The App integrates with the following third-party service:</p>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-label">Klipy (GIF Provider)</div>
+                    <div class="data-desc">When you use the GIF picker, the App communicates directly with Klipy's API (klipy.com) to search and retrieve GIFs. Klipy may collect certain information as described in their own privacy policy. We encourage you to review Klipy's privacy policy at <a href="https://klipy.com/support/privacy-policy" style="color: var(--accent); text-decoration: none;">klipy.com/support/privacy-policy</a>. We do not share any personal information with Klipy — GIF search queries are the only data transmitted to their service.</div>
+                </div>
+            </div>
+            <p>We do not use any advertising networks, analytics platforms, social media SDKs, or other third-party tracking services.</p>
+        </div>
+
+        <div class="section" id="s6">
+            <h2>6. Children's Privacy</h2>
+            <p>Yappers is not directed at children under the age of 13. We do not knowingly collect any personal information from children. Since the App does not require registration and does not collect personal data, there is minimal risk of inadvertently collecting children's information. However, the App contains a public feed with user-generated content that may include explicit language (when the explicit filter is disabled), and is therefore intended for users aged 13 and older.</p>
+            <p>If you are a parent or guardian and believe your child has provided personal information through the App, please contact us at the email address below and we will take steps to address the concern.</p>
+        </div>
+
+        <div class="section" id="s7">
+            <h2>7. Data Security</h2>
+            <p>We take reasonable measures to protect the information handled by the App. Communication between the App and our servers uses encrypted connections (WSS/HTTPS). Since we do not store user data on our servers, the risk of a data breach affecting personal information is minimal.</p>
+
+            <div class="highlight-box">
+                <p><strong>Important:</strong> Any message you send through the App is broadcast to all connected users in real time. Do not share personal, sensitive, or confidential information in the public feed, as it will be visible to anyone currently using the App.</p>
+            </div>
+        </div>
+
+        <div class="section" id="s8">
+            <h2>8. Your Rights</h2>
+            <p>Since we do not collect, store, or process personal data on our servers, traditional data subject rights (access, correction, deletion, portability) are not directly applicable to our service. However:</p>
+            <p><strong>Local data:</strong> You can delete all locally stored data at any time by clearing the App's storage in your device settings or by uninstalling the App.</p>
+            <p><strong>Messages:</strong> Once a message is broadcast, it cannot be recalled or deleted, as it is not stored on any server. Messages exist only in the real-time feed of currently connected users and disappear when those users close the App or new messages push older ones out of view.</p>
+        </div>
+
+        <div class="section" id="s9">
+            <h2>9. Content Moderation</h2>
+            <p>To maintain a safe environment, the App employs the following content moderation measures:</p>
+            <p><strong>Server-side hard filter:</strong> Messages containing hate speech, racist terminology, white supremacist content, and similar harmful material are automatically blocked and never broadcast to users.</p>
+            <p><strong>Client-side explicit filter:</strong> Users can enable an optional filter in Settings that redacts profane and explicit language with asterisks. This is a display preference that operates entirely on your device.</p>
+            <p>We do not employ human moderators and do not review individual messages. The content filtering is entirely automated.</p>
+        </div>
+
+        <div class="section" id="s10">
+            <h2>10. International Users</h2>
+            <p>Yappers is available to users worldwide. Our servers may be located in different regions. By using the App, you acknowledge that the minimal data involved in real-time message delivery may be processed in a country other than your own. Since we do not store personal data, cross-border data transfer concerns are minimal.</p>
+        </div>
+
+        <div class="section" id="s11">
+            <h2>11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be reflected by updating the "Effective Date" at the top of this document. We encourage you to review this Privacy Policy periodically. Continued use of the App after any changes constitutes acceptance of the updated policy.</p>
+            <p>For significant changes, we will make reasonable efforts to notify users through the App or other appropriate channels.</p>
+        </div>
+
+        <div class="section" id="s12">
+            <h2>12. Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <div class="contact-card">
+                <p><strong>Life Lens</strong></p>
+                <p>Email: <a href="mailto:nassimboussami@gmail.com">nassimboussami@gmail.com</a></p>
+                <p>App: Yappers</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Life Lens. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+        </p>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
+    <script>
+        const btn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            btn.classList.toggle('visible', window.scrollY > 400);
+        });
+    </script>
 
 </body>
 </html>

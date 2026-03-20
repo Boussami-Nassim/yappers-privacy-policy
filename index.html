@@ -245,6 +245,15 @@
             font-weight: 600;
         }
 
+        .section p a, .section a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .section p a:hover, .section a:hover {
+            text-decoration: underline;
+        }
+
         .highlight-box {
             background: var(--accent-light);
             border-left: 3px solid var(--accent);
@@ -287,6 +296,15 @@
             line-height: 1.65;
         }
 
+        .data-item .data-desc a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .data-item .data-desc a:hover {
+            text-decoration: underline;
+        }
+
         .not-collected {
             display: flex;
             flex-wrap: wrap;
@@ -307,7 +325,7 @@
         }
 
         .not-collected span::before {
-            content: '✕';
+            content: '\2715';
             font-size: 10px;
             font-weight: 700;
             opacity: 0.4;
@@ -407,7 +425,7 @@
         <div class="hero-meta">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                Effective: March 8, 2026
+                Effective: March 20, 2026
             </span>
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
@@ -455,11 +473,19 @@
             <div class="data-grid">
                 <div class="data-item">
                     <div class="data-label">Username</div>
-                    <div class="data-desc">When you first open the App, a random anonymous username is automatically generated (e.g., "Anon_3847"). This username is stored locally on your device and is not linked to your identity. You do not provide your real name.</div>
+                    <div class="data-desc">When you first open the App, a random anonymous username is automatically generated (e.g., "Anon_3847"). You can also set a custom username of up to 30 characters. Your username is stored locally on your device and is not linked to your identity. It is sent with each message so other users can see who posted.</div>
                 </div>
                 <div class="data-item">
                     <div class="data-label">Messages</div>
-                    <div class="data-desc">Any text messages you submit are broadcast to all connected users in real time. Messages are not stored on our servers — they are transmitted and then discarded. We do not maintain a message history or archive.</div>
+                    <div class="data-desc">Any text messages you submit are broadcast to all connected users in real time. Messages are stored on our servers for feed history purposes, allowing users to view recent messages when they open the App.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Reply Messages</div>
+                    <div class="data-desc">Users can reply to other users' messages. Replies are broadcast to all connected users in real time, the same as regular messages. Reply messages reference the original message being replied to.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Reactions</div>
+                    <div class="data-desc">Users can react to messages with emojis (&#x1F44D; &#x2764;&#xFE0F; &#x1F602; &#x1F525; &#x1F62E;). Reactions are broadcast to all connected users in real time. No personal data is associated with reactions beyond your anonymous username.</div>
                 </div>
                 <div class="data-item">
                     <div class="data-label">GIFs</div>
@@ -468,6 +494,10 @@
                 <div class="data-item">
                     <div class="data-label">Animations</div>
                     <div class="data-desc">When you trigger an animation (e.g., confetti), the animation name is broadcast to all connected users. No personal data is associated with this action.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Coin Balance</div>
+                    <div class="data-desc">Users earn and spend virtual coins within the App. The coin balance is stored locally on your device via DataStore. It is never transmitted to our servers.</div>
                 </div>
             </div>
 
@@ -482,39 +512,56 @@
                 <span>Photos or media</span>
                 <span>Contacts</span>
                 <span>Location data</span>
-                <span>Device identifiers</span>
                 <span>Biometric data</span>
             </div>
 
             <h3>2.3 Automatically Collected Information</h3>
-            <p>The App does not use analytics SDKs, crash reporting tools, or advertising trackers. We do not collect device information, IP addresses for profiling, or usage analytics. Your IP address may be visible to our hosting infrastructure as part of standard internet communication (WebSocket and HTTP connections), but we do not log, store, or process IP addresses for any purpose.</p>
+            <p>The Google AdMob SDK, which we use to display rewarded video advertisements, may automatically collect device information, advertising identifiers (e.g., Google Advertising ID), and ad interaction data for the purpose of serving personalized ads. For details on what data AdMob collects and how it is used, please refer to <a href="https://policies.google.com/privacy">Google's advertising privacy policy</a>. You can opt out of personalized advertising through your device's ad settings.</p>
+            <p>Firebase Cloud Messaging (FCM), which we use for push notifications, collects a device token for notification delivery. This token is used solely to route notifications to your device and is not linked to any personally identifiable information.</p>
+            <p>Your IP address may be visible to our hosting infrastructure as part of standard internet communication (WebSocket and HTTP connections), but we do not log, store, or process IP addresses for any purpose.</p>
         </div>
 
         <div class="section" id="s3">
             <h2>3. How We Use Information</h2>
-            <p>The minimal information we handle is used solely for the following purposes:</p>
+            <p>The information we handle is used for the following purposes:</p>
             <div class="data-grid">
                 <div class="data-item">
                     <div class="data-label">Message Delivery</div>
-                    <div class="data-desc">To broadcast your text messages, GIFs, and animation triggers to all connected users in real time via WebSocket.</div>
+                    <div class="data-desc">To broadcast your text messages, replies, reactions, GIFs, and animation triggers to all connected users in real time via WebSocket.</div>
                 </div>
                 <div class="data-item">
                     <div class="data-label">Content Moderation</div>
-                    <div class="data-desc">We apply a server-side filter to block messages containing hate speech, racist slurs, and other harmful content that violates community standards. Messages that trigger this filter are rejected and never broadcast. This filtering is done in real time and no message content is stored after processing.</div>
+                    <div class="data-desc">We apply a server-side filter to block messages containing hate speech, racist slurs, and other harmful content that violates community standards. Messages that trigger this filter are rejected and never broadcast. This filtering is done in real time and no rejected message content is stored.</div>
                 </div>
                 <div class="data-item">
                     <div class="data-label">Explicit Language Filtering</div>
-                    <div class="data-desc">The App includes an optional client-side explicit language filter. When enabled, profane or explicit words are replaced with asterisks on your device before being displayed. This filtering happens entirely on your device — no data about your filter preference is sent to our servers.</div>
+                    <div class="data-desc">The App includes an optional client-side explicit language filter. When enabled, profane or explicit words are replaced with asterisks on your device before being displayed. This filtering happens entirely on your device &mdash; no data about your filter preference is sent to our servers.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Push Notifications</div>
+                    <div class="data-desc">We use Firebase Cloud Messaging to deliver push notifications about new activity in the feed. Users can disable notifications at any time in their device settings. We store a last-notification timestamp locally on your device to implement a cooldown period (currently 5 minutes) to avoid excessive notifications.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Advertising</div>
+                    <div class="data-desc">We display rewarded video ads via Google AdMob. Users can choose to watch an ad to earn virtual coins (10 coins per ad, once per day). AdMob may use device identifiers and ad interaction data to serve ads. See <a href="https://policies.google.com/privacy">Google's advertising privacy policy</a> for details.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">In-App Purchases</div>
+                    <div class="data-desc">Users can purchase virtual coin packages through Google Play Billing. Purchase transactions are processed entirely by Google Play. We do not collect, store, or have access to payment information (credit card numbers, billing addresses, etc.). We only receive confirmation of successful purchases to credit the corresponding coin amount.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Virtual Currency</div>
+                    <div class="data-desc">Coins are used to unlock premium animations and text effects within the App. Coin balance is tracked locally on your device and is not transmitted to our servers.</div>
                 </div>
             </div>
         </div>
 
         <div class="section" id="s4">
             <h2>4. Data Storage &amp; Retention</h2>
-            <p>Yappers operates on a "fire-and-forget" model. Messages are broadcast in real time to all connected users and are not stored on our servers. There is no message database, no chat history, and no data archive.</p>
+            <p>Messages submitted through the App are stored on our servers for feed history purposes, allowing users to view recent messages when they open the App. Messages are associated only with your anonymous username and do not contain personally identifiable information.</p>
 
             <div class="highlight-box">
-                <p>The following data is stored <strong>locally on your device only</strong> (never transmitted to our servers except where noted): your auto-generated anonymous username (sent with each message so other users can see who posted), your theme preference (dark or light mode), your explicit language filter preference (on or off), your onboarding completion status, and a cached word list for the client-side explicit language filter.</p>
+                <p>The following data is stored <strong>locally on your device only</strong> (never transmitted to our servers except where noted): your anonymous username (sent with each message so other users can see who posted), your theme preference (dark or light mode), your explicit language filter preference (on or off), your onboarding completion status, a cached word list for the client-side explicit language filter, your coin balance, effect usage tracking (date and counts for daily usage limits), last daily bonus claim date, last rewarded ad watched date, terms acceptance status, and last notification timestamp.</p>
             </div>
 
             <p>This local data can be cleared at any time by clearing the App's data in your device settings or by uninstalling the App.</p>
@@ -522,14 +569,25 @@
 
         <div class="section" id="s5">
             <h2>5. Third-Party Services</h2>
-            <p>The App integrates with the following third-party service:</p>
+            <p>The App integrates with the following third-party services:</p>
             <div class="data-grid">
                 <div class="data-item">
                     <div class="data-label">Klipy (GIF Provider)</div>
-                    <div class="data-desc">When you use the GIF picker, the App communicates directly with Klipy's API (klipy.com) to search and retrieve GIFs. Klipy may collect certain information as described in their own privacy policy. We encourage you to review Klipy's privacy policy at <a href="https://klipy.com/support/privacy-policy" style="color: var(--accent); text-decoration: none;">klipy.com/support/privacy-policy</a>. We do not share any personal information with Klipy — GIF search queries are the only data transmitted to their service.</div>
+                    <div class="data-desc">When you use the GIF picker, the App communicates directly with Klipy's API (klipy.com) to search and retrieve GIFs. Klipy may collect certain information as described in their own privacy policy. We encourage you to review Klipy's privacy policy at <a href="https://klipy.com/support/privacy-policy">klipy.com/support/privacy-policy</a>. We do not share any personal information with Klipy &mdash; GIF search queries are the only data transmitted to their service.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Google AdMob (Advertising)</div>
+                    <div class="data-desc">We use Google AdMob to display rewarded video advertisements. AdMob may collect device identifiers, ad interaction data, and other information as described in <a href="https://policies.google.com/privacy">Google's privacy policy</a>. Users can opt out of personalized advertising through their device's ad settings.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Google Play Billing (In-App Purchases)</div>
+                    <div class="data-desc">In-app purchases are processed through Google Play. Google handles all payment processing. We do not receive or store any payment details such as credit card numbers or billing addresses. <a href="https://policies.google.com/privacy">Google's privacy policy</a> applies to purchase transactions.</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-label">Firebase Cloud Messaging (Push Notifications)</div>
+                    <div class="data-desc">We use FCM to send push notifications about new activity in the feed. FCM assigns a device token for notification delivery. This token is not linked to any personally identifiable information. <a href="https://policies.google.com/privacy">Google's privacy policy</a> applies.</div>
                 </div>
             </div>
-            <p>We do not use any advertising networks, analytics platforms, social media SDKs, or other third-party tracking services.</p>
         </div>
 
         <div class="section" id="s6">
@@ -540,7 +598,7 @@
 
         <div class="section" id="s7">
             <h2>7. Data Security</h2>
-            <p>We take reasonable measures to protect the information handled by the App. Communication between the App and our servers uses encrypted connections (WSS/HTTPS). Since we do not store user data on our servers, the risk of a data breach affecting personal information is minimal.</p>
+            <p>We take reasonable measures to protect the information handled by the App. Communication between the App and our servers uses encrypted connections (WSS/HTTPS). Since we collect minimal user data and do not store personally identifiable information, the risk of a data breach affecting personal information is minimal.</p>
 
             <div class="highlight-box">
                 <p><strong>Important:</strong> Any message you send through the App is broadcast to all connected users in real time. Do not share personal, sensitive, or confidential information in the public feed, as it will be visible to anyone currently using the App.</p>
@@ -549,9 +607,11 @@
 
         <div class="section" id="s8">
             <h2>8. Your Rights</h2>
-            <p>Since we do not collect, store, or process personal data on our servers, traditional data subject rights (access, correction, deletion, portability) are not directly applicable to our service. However:</p>
+            <p>Since we do not collect or process personally identifiable data on our servers, traditional data subject rights (access, correction, deletion, portability) are not directly applicable to our service. However:</p>
             <p><strong>Local data:</strong> You can delete all locally stored data at any time by clearing the App's storage in your device settings or by uninstalling the App.</p>
-            <p><strong>Messages:</strong> Once a message is broadcast, it cannot be recalled or deleted, as it is not stored on any server. Messages exist only in the real-time feed of currently connected users and disappear when those users close the App or new messages push older ones out of view.</p>
+            <p><strong>Messages:</strong> Messages are stored on our servers for feed history purposes and are associated only with your anonymous username. Since messages do not contain personally identifiable information, individual message deletion requests are not supported.</p>
+            <p><strong>Ad personalization:</strong> You can opt out of personalized advertising by adjusting your device's ad settings (Settings &rarr; Google &rarr; Ads on Android devices).</p>
+            <p><strong>In-app purchases:</strong> In-app purchases of virtual coins are processed by Google Play and are subject to <a href="https://support.google.com/googleplay/answer/2479637">Google Play's refund policy</a>. We do not process refunds directly.</p>
         </div>
 
         <div class="section" id="s9">
@@ -564,7 +624,7 @@
 
         <div class="section" id="s10">
             <h2>10. International Users</h2>
-            <p>Yappers is available to users worldwide. Our servers may be located in different regions. By using the App, you acknowledge that the minimal data involved in real-time message delivery may be processed in a country other than your own. Since we do not store personal data, cross-border data transfer concerns are minimal.</p>
+            <p>Yappers is available to users worldwide. Our servers may be located in different regions. By using the App, you acknowledge that data involved in message delivery and storage may be processed in a country other than your own. Since we do not store personally identifiable information, cross-border data transfer concerns are minimal.</p>
         </div>
 
         <div class="section" id="s11">
